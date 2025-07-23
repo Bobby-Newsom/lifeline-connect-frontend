@@ -12,29 +12,34 @@ export default function ChatBox() {
   };
 
   return (
-    <div className="w-full max-w-xl bg-white rounded shadow p-4">
-      <div className="h-64 overflow-y-auto mb-4 bg-gray-50 p-2 rounded">
+    <div className="container p-3 border rounded bg-white shadow-sm">
+      <div
+        className="overflow-auto mb-3 p-2 border rounded bg-light"
+        style={{ height: "16rem" }}
+      >
         {messages.map((msg, i) => (
           <div
             key={i}
-            className={`mb-2 ${msg.sender === "user" ? "text-right" : "text-left"}`}
+            className={`mb-2 d-flex ${
+              msg.sender === "user" ? "justify-content-end" : "justify-content-start"
+            }`}
           >
-            <span className="inline-block px-3 py-2 rounded bg-blue-100 text-sm">
+            <span className="px-3 py-2 rounded bg-primary bg-opacity-10 text-dark small">
               {msg.text}
             </span>
           </div>
         ))}
       </div>
-      <div className="flex">
+      <div className="input-group">
         <input
-          className="flex-1 border px-3 py-2 rounded-l"
+          className="form-control"
           type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Ask a question..."
         />
         <button
-          className="bg-blue-600 text-white px-4 rounded-r"
+          className="btn btn-primary"
           onClick={sendMessage}
         >
           Send

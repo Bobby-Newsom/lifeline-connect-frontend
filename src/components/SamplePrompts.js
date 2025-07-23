@@ -6,15 +6,17 @@ const prompts = [
   "What virtual services are available?"
 ];
 
-export default function SamplePrompts() {
+export default function SamplePrompts({ onSend }) {
   return (
-    <div className="mb-6 w-full max-w-xl">
-      <p className="mb-2 text-gray-600 font-medium">Try a sample question:</p>
-      <div className="flex flex-wrap gap-2">
+    <div className="mb-4 w-100" style={{ maxWidth: "48rem" }}>
+      <p className="mb-2 text-secondary fw-medium">Try a sample question:</p>
+      <div className="d-flex flex-wrap gap-2">
         {prompts.map((prompt, idx) => (
           <button
             key={idx}
-            className="bg-white text-sm border px-4 py-2 rounded shadow hover:bg-blue-50"
+            type="button"
+            className="btn btn-sm btn-outline-secondary shadow-sm"
+            onClick={() => onSend && onSend(prompt)}
           >
             {prompt}
           </button>

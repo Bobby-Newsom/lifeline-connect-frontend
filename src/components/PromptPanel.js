@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const samplePrompts = [
   "I need help finding housing.",
@@ -18,32 +18,37 @@ const icons = [
 
 const PromptPanel = ({ onSend }) => {
   return (
-    <div className="p-4 bg-gray-200 space-y-4">
-      <div>
-        <h2 className="font-semibold mb-2">Try a sample prompt:</h2>
-        <div className="flex flex-wrap gap-2">
+    <div className="p-3 bg-light rounded mb-3">
+      {/* Sample prompts */}
+      <div className="mb-4">
+        <h2 className="h6 fw-semibold mb-2">Try a sample prompt:</h2>
+        <div className="d-flex flex-wrap gap-2">
           {samplePrompts.map((text, index) => (
             <button
+              type="button"
               key={index}
               onClick={() => onSend(text)}
-              className="px-3 py-1 bg-white border border-gray-300 rounded hover:bg-gray-100"
+              className="btn btn-sm btn-outline-secondary"
             >
               {text}
             </button>
           ))}
         </div>
       </div>
+
+      {/* Quick access icons */}
       <div>
-        <h2 className="font-semibold mb-2">Quick access categories:</h2>
-        <div className="flex flex-wrap gap-3">
+        <h2 className="h6 fw-semibold mb-2">Quick access categories:</h2>
+        <div className="d-flex flex-wrap gap-3">
           {icons.map((item, index) => (
             <button
+              type="button"
               key={index}
               onClick={() => onSend(item.message)}
-              className="flex items-center gap-2 px-4 py-2 bg-white border rounded hover:bg-gray-100"
+              className="btn btn-light border d-flex align-items-center gap-2 py-2 px-3"
             >
-              <span className="text-xl">{item.emoji}</span>
-              <span>{item.label}</span>
+              <span className="fs-4">{item.emoji}</span>
+              <span className="small">{item.label}</span>
             </button>
           ))}
         </div>
