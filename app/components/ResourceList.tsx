@@ -1,6 +1,6 @@
 import React from "react";
 
-const ResourceList = ({ resources }) => {
+const ResourceList = ({ resources }: { resources: any[] }) => {
   return (
     <div className="mt-2">
       {resources.map((r, i) => {
@@ -14,14 +14,14 @@ const ResourceList = ({ resources }) => {
             : null;
 
         return (
-          <div key={i} className="card mb-2">
-            <div className="card-body p-2">
-              <h6 className="card-title mb-1">{r.name}</h6>
+          <div key={i} className="bg-white rounded shadow mb-2">
+            <div className="p-2">
+              <h6 className="font-semibold mb-1 text-base">{r.name}</h6>
 
-              {r.description && <p className="small mb-1">{r.description}</p>}
+              {r.description && <p className="text-sm mb-1">{r.description}</p>}
 
               {fullAddr && (
-                <p className="small mb-1">
+                <p className="text-sm mb-1">
                   {fullAddr}
                   {mapsUrl && (
                     <>
@@ -31,7 +31,7 @@ const ResourceList = ({ resources }) => {
                         href={mapsUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="link-primary"
+                        className="text-blue-600 underline hover:text-blue-800"
                       >
                         Open in Google Maps
                       </a>
@@ -40,14 +40,14 @@ const ResourceList = ({ resources }) => {
                 </p>
               )}
 
-              {r.phone && <p className="small mb-1">📞 {r.phone}</p>}
+              {r.phone && <p className="text-sm mb-1">📞 {r.phone}</p>}
 
               {r.website && (
                 <a
                   href={r.website.startsWith("http") ? r.website : `https://${r.website}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="small"
+                  className="text-sm text-blue-600 underline hover:text-blue-800"
                 >
                   Website
                 </a>
